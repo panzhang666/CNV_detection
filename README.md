@@ -15,3 +15,23 @@ libraries, each sample has a slightly different average NGS read depth across al
 
 ● Each probe captures DNA with different efficiency relative to other probes, but you can
 assume that a single probe is equally efficient across all samples.
+
+
+## Objective
+
+Characterize the deletion and duplication frequencies and breakpoint positions on a per-​ethnicity basis.
+
+
+## Algorithm
+
+
+● Step 1: filter the prob with less than 10 depth in at least 10 sample (CNSL_probe_5 is filtered in
+this case)
+
+● Step 2: fit the depth to a statistical model descripted on the paper named "Development and validation of a 36-gene sequencing assay for hereditary cancer risk assessment". In brief, the likelihood of observing a given number of mapped reads di,j at a given genomic position i for sample j with copy number ci,j is modeled as following:
+p(di,j |ci,j ) = NegBinom(di,j |μ = ci,j μiμj ,r = ri)
+where μi is the average depth for that targeted location across samples, μj is the average depth for that particular sample across targeted positions, ri is the dispersion parameter.
+
+● Step 3: Assign the copy number with largest probability to each sequencing depth.
+
+● Step 4: A deletion or duplication is any contiguous stretch of at least four well behaved probes that have copy number of ~1 or ~3, respectively.
