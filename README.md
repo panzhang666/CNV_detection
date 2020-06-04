@@ -6,9 +6,12 @@ With help from someone on the molecular biology team, you developed probes for t
 
 ## Assumptions:
 ● Probes in the “non​CNSL” region are expected to have CN=2.
+
 ● A deletion or duplication is any contiguous stretch of at least four well behaved probes
 that have copy number of ~1 or ~3, respectively.
+
 ● Due to variability of extraction efficiency in the lab and error in the quantification of DNA
 libraries, each sample has a slightly different average NGS read depth across all probes.
+
 ● Each probe captures DNA with different efficiency relative to other probes, but you can
 assume that a single probe is equally efficient across all samples.
